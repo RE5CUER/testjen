@@ -4,17 +4,17 @@ pipeline {
         stage('Install MySQL Client') {
             steps {
                 script {
-                    // Устанавливаем MySQL client
-                    sh "sudo apt-get update && sudo apt-get install -y mariadb-client"
+                    // Устанавливаем sudo
+                    sh 'apt-get update && apt-get install -y sudo'
+                    // Далее устанавливаем MySQL клиент
+                    sh 'sudo apt-get update && sudo apt-get install -y mariadb-client'
                 }
             }
         }
         stage('Run SQL Query') {
             steps {
                 script {
-                    // Выполняем SQL-запрос
                     echo 'Running SQL query'
-                    // Здесь ваш SQL запрос или другие команды
                 }
             }
         }
