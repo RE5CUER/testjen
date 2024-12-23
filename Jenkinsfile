@@ -4,7 +4,7 @@ pipeline {
     environment {
         DB_HOST = 'mysql-rfam-public.ebi.ac.uk'
         DB_USER = 'rfamro'
-        DB_PASSWORD = ''  // Нет пароля
+        DB_PASSWORD = ''  //без пароля
         DB_PORT = '4497'
         DB_NAME = 'Rfam'
     }
@@ -12,7 +12,6 @@ pipeline {
     stages {
         stage('Checkout SQL Script') {
             steps {
-                // Клонируем репозиторий с указанием ветки 'main'
                 git branch: 'main', url: 'https://github.com/RE5CUER/testjen.git'
             }
         }
@@ -20,7 +19,6 @@ pipeline {
         stage('Run MySQL Query') {
             steps {
                 script {
-                    // В данном случае используем sh для выполнения mysql
                     sh '''#!/bin/bash
                     mysql --user=$DB_USER --host=$DB_HOST --port=$DB_PORT --database=$DB_NAME -e "select * from fr.fram_acc limit 1;"
                     mysql --user=$DB_USER --host=$DB_HOST --port=$DB_PORT --database=$DB_NAME -e "SELECT fr.rfam_acc, fr.rfamseq_acc, fr.seq_start, fr.seq_end FROM full_region fr, rfamseq rf, taxonomy tx WHERE rf.ncbi_id = tx.ncbi_id AND fr.rfamseq_acc = rf.rfamseq_acc AND tx.ncbi_id = 10116 AND is_significant = 1;"
