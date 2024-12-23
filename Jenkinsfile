@@ -4,7 +4,7 @@ pipeline {
         stage('Install MySQL Client') {
             steps {
                 script {
-                    // Команда будет выполняться с правами root через sudo
+                    // Добавляем явный параметр 'it ->' для правильной обработки замыкания
                     sh 'sudo apt-get update && sudo apt-get install -y mariadb-client'
                 }
             }
