@@ -3,15 +3,18 @@ pipeline {
     stages {
         stage('Install MySQL Client') {
             steps {
-                script('script block') {
+                script {
+                    // Устанавливаем MySQL client
                     sh "sudo apt-get update && sudo apt-get install -y mariadb-client"
                 }
             }
         }
         stage('Run SQL Query') {
             steps {
-                script('script block') {
-                    // Ваш SQL-запрос здесь
+                script {
+                    // Выполняем SQL-запрос
+                    echo 'Running SQL query'
+                    // Здесь ваш SQL запрос или другие команды
                 }
             }
         }
