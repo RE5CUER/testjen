@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout SQL Script') {
             steps {
                 // Клонировать репозиторий или скачать скрипты
-                git 'https://github.com/yourusername/your-repository'
+                git 'https://github.com/RE5CUER/testjen'
             }
         }
 
