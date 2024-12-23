@@ -4,15 +4,15 @@ pipeline {
         stage('Install MySQL Client') {
             steps {
                 script {
-                    // Добавляем явный параметр 'it ->' для правильной обработки замыкания
-                    sh 'sudo apt-get update && sudo apt-get install -y mariadb-client'
+                    // Исправленный блок, чтобы он явно был идентифицирован как замыкание
+                    sh "sudo apt-get update && sudo apt-get install -y mariadb-client"
                 }
             }
         }
         stage('Run SQL Query') {
             steps {
                 script {
-                    // Логика SQL запроса
+                    // Ваш SQL-запрос здесь
                 }
             }
         }
