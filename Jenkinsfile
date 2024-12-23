@@ -4,7 +4,7 @@ pipeline {
         stage('Install MySQL Client') {
             steps {
                 script {
-                    // Исправленный блок, чтобы он явно был идентифицирован как замыкание
+                    // Здесь уточняем замыкание с параметром, чтобы исключить неоднозначность
                     sh "sudo apt-get update && sudo apt-get install -y mariadb-client"
                 }
             }
